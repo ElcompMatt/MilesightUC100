@@ -35,12 +35,12 @@ This is to set a value to be claculated later.
 This should be left at 1 if no action is to be taken.
 
 >[!CAUTION]
-Hard setting scaling values, then changing them can have an effect on the accuracy of your data store, so please make sure you have the correct value. 
+Hard setting scaling values then changing them later will have an effect on the accuracy of your data store, so please make sure you have the correct value. 
 
 **ScalingChannel : int**
 
-There are times where modbus devices have a register that either holds a fixed scaling value or scaling value that can change value as registers increase in size. 
-When you conigure the UC100, you can define the scaling channel address, then use that address. This will tell your logic in the webhook to take the value ffom that register value and perform a calculation. 
+Some modbus devices have a register that either holds a fixed scaling value or scaling value that can change as registers increase in size. 
+When you conigure the UC100, you can define the scaling channel address (or the appropriate device), then use that address. This will tell your logic in your end point to take the value from that register and perform a calculation and always use the latest value as defined by the device register. 
 
 >[!TIP]
 This should be left at -1 if no action is to be taken.
