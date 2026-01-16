@@ -1,6 +1,10 @@
 ## Milesight UC100 Payload Converter with History Decoder.
 In the UC100 you can set the device to log historical data when the device loses comms, it will then retransmit that data when it comes back on line.
 
+The script will take both current and historical payloads and keep them in a single format to send onwards.
+
+You can then use the flags in the payload to calculate the date time. 
+
 >[!WARNING]
 This has only been tested with firmware v1.9 (of the milesight UC100), so test it properly if you are using verions lower than v1.9. 
 
@@ -8,6 +12,12 @@ This has only been tested with firmware v1.9 (of the milesight UC100), so test i
 
 ## UC100 Decoder with history 
 This is a JS script to decode the Milesight UC100 modbus device and convert that data as well as historical transmissions into a single format for consumption by a webhook or similar.  
+
+When the JSON payload is received by an end point there are two flags to consider:
+
+**isHistory : bool** - This will tell you if the data is historical data being sent by the UC100. 
+
+**HistoricDate : string** - This is the timestamp of the historic data in Unix seconds. 
 
 **[UC100 Payload Decoder (JS)](https://github.com/ElcompMatt/MilesightUC100/blob/main/UC100WithHistoryDecoder.js)**
 
