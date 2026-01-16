@@ -12,7 +12,7 @@ It uses the existing Milesight payload decoders and then puts it in a structured
 
 Currently the real time and historical is in two seperate payload formats from the device, the prupose of this is to have both real time and history data in the same format. 
 
-### UC100 JSON Model For C####
+### UC100 JSON Model For C
 
 This is a C# JSON Model to process the data sent in the payload. 
 
