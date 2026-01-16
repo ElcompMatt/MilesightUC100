@@ -16,6 +16,8 @@ Currently the real time and historical is in two seperate payload formats from t
 
 This is a C# JSON Model to process the data sent in the payload. 
 
+You just need to catch the flags hisotry and timestamp flag in the TTN payload and process as you see fit. 
+
 **[UC100 C# JSON Model](https://github.com/ElcompMatt/MilesightUC100/blob/main/MliesightUC100JsonModel.cs)**
 
 e.g.  
@@ -23,6 +25,18 @@ e.g.
 public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequest req)
 {
      var ttnPayload = await req.ReadFromJsonAsync<MilesightUC100JsonModel>();
+
+      string? timestamp;
+      var decoded = ttnPayload.UplinkMessage?.DecodedPayload;
+
+      if (decoded != null && decoded.IsHistory && decoded.HistoricDate.HasValue)
+      {                    
+          timestamp = DateTimeOffset.FromUnixTimeSeconds(decoded.HistoricDate.Value).UtcDateTime.ToString("o");
+      }
+      else
+      {
+          timestamp = TimestampHelper.TryParseTimestamp(ttnPayload.UplinkMessage?.ReceivedAt.ToString());
+      }
 
      return new OkObjectResult("Ok");
 }
