@@ -3,8 +3,6 @@ In the UC100 you can set the device to log historical data when the device loses
 
 The script will take both current and historical payloads and keep them in a single format to send onwards.
 
-You can then use the flags in the payload to calculate the date time. 
-
 >[!WARNING]
 This has only been tested with firmware v1.9 (of the milesight UC100), so test it properly if you are using verions lower than v1.9. 
 
